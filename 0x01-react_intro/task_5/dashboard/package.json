@@ -1,0 +1,39 @@
+{
+  "name": "task_5",
+  "version": "1.0.0",
+  "description": "Creating a project using Webpack",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production --config config/webpack.config.js",
+    "start": "webpack serve --open --mode development --config config/webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/akakiplimo/alx-react.git"
+  },
+  "keywords": [
+    "webpack",
+    "project",
+    "from",
+    "scratch"
+  ],
+  "author": "A. Kiplimo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akakiplimo/alx-react/issues"
+  },
+  "homepage": "https://github.com/akakiplimo/alx-react#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.3",
+    "file-loader": "^6.2.0",
+    "image-webpack-loader": "^8.1.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "inline-source-map": "^0.6.2"
+  }
+}
