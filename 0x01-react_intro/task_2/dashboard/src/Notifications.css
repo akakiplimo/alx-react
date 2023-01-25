@@ -1,6 +1,7 @@
 .Notifications {
     padding: 2em;
     border: 2px solid red;
+    border-style: dotted;
     font-family: Arial, Helvetica, sans-serif;
 }
 
