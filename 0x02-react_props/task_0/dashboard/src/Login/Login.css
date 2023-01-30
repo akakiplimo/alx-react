@@ -1,0 +1,6 @@
+.App-body {
+	font-size: var(--gen-font-size);
+	padding: calc(var(--padding) * 2);
+	border-bottom: var(--border-bottom);
+	height: 45%;
+}
