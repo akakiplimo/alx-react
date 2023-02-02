@@ -1,0 +1,22 @@
+.menuItem {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+}
+
+.Notifications {
+	border: 3px dotted var(--holberton-red);
+	padding: 6px 12px;
+    position: absolute;
+    top: 21px;
+    right: 7px;
+	margin-top: 12px;
+}
+
+li[data="default"] {
+	color: blue;
+}
+
+li[data="urgent"] {
+	color: var(--holberton-red);
+}
