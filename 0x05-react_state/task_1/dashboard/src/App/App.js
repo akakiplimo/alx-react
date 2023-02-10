@@ -34,17 +34,21 @@ class App extends React.Component {
   }
 
   handleDisplayDrawer = () => {
+    console.log(this.state.displayDrawer);
     console.log("Your notification clicked");
     this.setState({ 
       displayDrawer: true 
     });
+    console.log(this.state.displayDrawer);
   }
 
   handleHideDrawer = () => {
+    console.log(this.state.displayDrawer);
     console.log("Close button clicked");
     this.setState({ 
       displayDrawer: false 
     });
+    console.log(this.state.displayDrawer);
   }
 
   handleKeyDown(e) {
