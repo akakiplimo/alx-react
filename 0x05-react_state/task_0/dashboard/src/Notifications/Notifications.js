@@ -23,7 +23,7 @@ class Notifications extends React.Component {
     return (
       <>
         {!this.props.displayDrawer ?
-          <div className={css(notificationStyles.menuItem)}>
+          <div className={css(notificationStyles.menuItem)} onClick={this.props.handleDisplayDrawer}>
             Your notifications
           </div>
         :
@@ -44,6 +44,7 @@ class Notifications extends React.Component {
             className={css(notificationStyles.button)}
             onClick={(e) => {
               console.log('Close button has been clicked');
+              this.props.handleHideDrawer();
             }}
             >
               <img src={closeIcon} alt="close icon" width="15px" />

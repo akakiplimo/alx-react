@@ -33,13 +33,15 @@ class App extends React.Component {
     };
   }
 
-  handleDisplayDrawer() {
+  handleDisplayDrawer = () => {
+    console.log("Your notification clicked");
     this.setState({ 
       displayDrawer: true 
     });
   }
 
-  handleHideDrawer() {
+  handleHideDrawer = () => {
+    console.log("Close button clicked");
     this.setState({ 
       displayDrawer: false 
     });
@@ -67,7 +69,7 @@ class App extends React.Component {
         <Notification 
           listNotifications={this.listNotifications}
           displayDrawer={this.state.displayDrawer}
-          handleDisplayDrawer={this.handleDisplayDrawerChange}
+          handleDisplayDrawer={this.handleDisplayDrawer}
           handleHideDrawer={this.handleHideDrawer}
         />
         <div className={css(bodyStyles.App)}>
