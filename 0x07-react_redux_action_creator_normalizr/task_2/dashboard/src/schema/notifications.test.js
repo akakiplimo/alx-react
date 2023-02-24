@@ -24,7 +24,6 @@ describe("Test for Notifications.js", () => {
   });
 
   it("normalizes result", () => {
-
     const data = [
       "5debd76480edafc8af244228",
       "5debd764507712e7a1307303",
@@ -53,10 +52,10 @@ describe("Test for Notifications.js", () => {
       name: { first: "Poole", last: "Sanders" },
       email: "poole.sanders@holberton.nz",
       picture: "http://placehold.it/32x32",
-      age: 25
+      age: 25,
     };
 
-    const user = normalizedData.entities.users['5debd764a7c57c7839d722e9'];
+    const user = normalizedData.entities.users["5debd764a7c57c7839d722e9"];
     expect(user).toEqual(mockUser);
     expect(user).toMatchObject(mockUser);
   });
@@ -66,10 +65,11 @@ describe("Test for Notifications.js", () => {
       guid: "efb6c485-00f7-4fdf-97cc-5e12d14d6c41",
       isRead: false,
       type: "default",
-      value: "Cursus risus at ultrices mi."
+      value: "Cursus risus at ultrices mi.",
     };
 
-    const message = normalizedData.entities.messages['efb6c485-00f7-4fdf-97cc-5e12d14d6c41'];
+    const message =
+      normalizedData.entities.messages["efb6c485-00f7-4fdf-97cc-5e12d14d6c41"];
     expect(message).toEqual(data);
   });
 
@@ -77,11 +77,11 @@ describe("Test for Notifications.js", () => {
     const data = {
       author: "5debd764f8452ef92346c772",
       context: "3068c575-d619-40af-bf12-dece1ee18dd3",
-      id: "5debd7642e815cd350407777"
+      id: "5debd7642e815cd350407777",
     };
 
-    const notification = normalizedData.entities.notifications['5debd7642e815cd350407777'];
+    const notification =
+      normalizedData.entities.notifications["5debd7642e815cd350407777"];
     expect(notification).toEqual(data);
-    
   });
 });
