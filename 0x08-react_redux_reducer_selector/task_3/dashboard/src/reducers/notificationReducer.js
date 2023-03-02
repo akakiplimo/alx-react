@@ -6,18 +6,21 @@ import {
 
 export const INITIAL_STATE = {
   notifications: [],
-  filter: "",
+  filter: "DEFAULT",
 };
 
 const notificationReducter = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_NOTIFICATIONS_SUCCESS:
-      return action.data.map((notification) => {
-        return {
-          ...notification,
-          isRead: true,
-        };
-      });
+      return {
+        ...state,
+        notifications: action.data.map((notification) => {
+          return {
+            ...notification,
+            isRead: false,
+          };
+        }),
+      };
 
     case MARK_AS_READ:
       return {
