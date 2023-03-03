@@ -7,9 +7,9 @@ import {
 } from "../actions/notificationActionTypes";
 
 describe("notificationReducer", () => {
-  it("initial state", function () {
+  it("Test that the default state returns the correct object", function () {
     const state = notificationReducer(undefined, {});
-    expect(state).toEqual(INITIAL_STATE);
+    expect(state.toJS()).toEqual(INITIAL_STATE.toJS());
   });
 
   it("FETCH_NOTIFICATIONS_SUCCESS", function () {
@@ -57,7 +57,7 @@ describe("notificationReducer", () => {
       ],
     };
     const state = notificationReducer(undefined, action);
-    expect(state).toEqual(expectedData);
+    expect(state.toJS()).toEqual(expectedData);
   });
 
   it("MARK_AS_READ", function () {
@@ -115,7 +115,7 @@ describe("notificationReducer", () => {
     };
 
     const state = notificationReducer(initialState, action);
-    expect(state).toEqual(expectedData);
+    expect(state.toJS()).toEqual(expectedData);
   });
   it("SET_TYPE_FILTER", function () {
     const initialState = {
@@ -172,6 +172,6 @@ describe("notificationReducer", () => {
     };
 
     const state = notificationReducer(initialState, action);
-    expect(state).toEqual(expectedData);
+    expect(state.toJS()).toEqual(expectedData);
   });
 });

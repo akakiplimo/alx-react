@@ -15,7 +15,7 @@ const notificationReducter = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_NOTIFICATIONS_SUCCESS:
       const normalizedData = notificationsNormalizer(action.data);
-      Object.keys(normalizedData).map((keys) => {
+      Object.keys(normalizedData).map((key) => {
         normalizedData.notifications[key].isRead = false;
       });
       return state.merge(normalizedData);

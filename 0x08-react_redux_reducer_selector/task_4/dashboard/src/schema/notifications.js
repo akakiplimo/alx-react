@@ -25,8 +25,7 @@ const notification = new schema.Entity("notifications", {
 });
 
 export const notificationsNormalizer = (data) => {
-  const normalizedData = normalize(data, [notification]);
-  return normalizedData.entities.notification;
+  return normalizedData = normalize(data, [notification]).entities;
 }
 
 export const normalizedData = notificationsNormalizer(notificationItem);
