@@ -1,41 +1,27 @@
-import { Map } from "immutable";
+import { Map, setIn } from "immutable";
 import {
   SELECT_COURSE,
   UNSELECT_COURSE,
   FETCH_COURSE_SUCCESS,
 } from "../actions/courseActionTypes";
+import coursesNormalizer from "../schema/courses";
 
-export const INITIAL_STATE = [];
+export const INITIAL_STATE = Map([]);
 
-export default function courseReducer(state = Map(INITIAL_STATE), action) {
+export default function courseReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case FETCH_COURSE_SUCCESS:
-        return action.data.map(course => {
-            return {
-              ...course,
-              isSelected: false
-            };
-        });
-    
-    case SELECT_COURSE:
-        return state.map((course) => {
-            const current = {
-                ...course,
-              };
-              if (course.id == action.index) current.isSelected = true;
+      const normalizedData = coursesNormalizer(action.data);
+      Object.keys(normalizedData).map((key) => {
+        normalizedData[key].isSelected = false;
+      });
+      return state.merge(normalizedData);
 
-              return current;
-        });
+    case SELECT_COURSE:
+      return setIn(state, [String(action.index), "isSelected"], true);
 
     case UNSELECT_COURSE:
-        return state.map((course) => {
-            const current = {
-                ...course,
-            };
-            if (course.id == action.index) current.isSelected = false;
-
-            return current;
-        });
+      return setIn(state, [String(action.index), "isSelected"], false);
 
     default:
       return state;
