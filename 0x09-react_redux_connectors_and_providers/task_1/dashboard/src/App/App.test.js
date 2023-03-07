@@ -1,9 +1,4 @@
-import React from "react";
-import { shallow, mount } from "enzyme";
-import { jest } from "@jest/globals";
 import App, { mapStateToProps } from "./App";
-import { StyleSheetTestUtils } from "aphrodite";
-
 import uiReducer, { INITIAL_STATE } from "../reducers/uiReducer";
 import { createStore } from "redux";
 import { fromJS } from "immutable";
@@ -19,5 +14,15 @@ describe("Test <App /> State", () => {
     const result = mapStateToProps(state);
 
     expect(result).toEqual({ isLoggedIn: true });
-  })
+  });
+
+  it("mapStateToProps returns the right object from display Drawer", () => {
+    let state = fromJS({
+      isNotificationDrawerVisible: true,
+    });
+
+    const result = mapStateToProps(state);
+
+    expect(result).toEqual({ displayDrawer: true });
+  });
 });
