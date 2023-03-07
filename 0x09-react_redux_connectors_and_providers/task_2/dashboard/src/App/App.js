@@ -10,13 +10,13 @@ import { getLatestNotification } from "../utils/utils";
 import { StyleSheet, css } from "aphrodite";
 import { AppProvider, user, logOut } from "./AppContext";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import {
   displayNotificationDrawer,
   hideNotificationDrawer,
   loginRequest,
   logout
 } from "../actions/uiActionCreators";
-import PropTypes from "prop-types";
 
 const listCourses = [
   { id: 1, name: "ES6", credit: 60 },

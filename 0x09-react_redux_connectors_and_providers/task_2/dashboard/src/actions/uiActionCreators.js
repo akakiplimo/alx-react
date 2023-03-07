@@ -7,7 +7,6 @@ import {
   LOGIN_FAILURE,
 } from "./uiActionTypes";
 
-
 export const login = (email, password) => {
   return { type: LOGIN, user: { email, password } };
 };
@@ -24,16 +23,15 @@ export const loginFailure = () => {
 
 export const loginRequest = (email, password) => {
   return (dispatch, getState) => {
-    console.log(getState());
+    console.log('before', getState());
 
     dispatch(login(email, password));
 
-    fetch("/login-success.json", {
-      mode: "json",
-    })
+    return fetch("http://localhost:8564/login-success.json")
       .then((response) => response.json())
       .then((json) => dispatch(loginSuccess()))
       .catch((error) => dispatch(loginFailure()));
+
   };
 };
 

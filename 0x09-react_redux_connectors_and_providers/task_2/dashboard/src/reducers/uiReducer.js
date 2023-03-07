@@ -31,15 +31,15 @@ export default function uiReducer(state = Map(INITIAL_STATE), action) {
 
     case LOGIN_SUCCESS:
       // we then return a new state object
-      return set.state('isUserLoggedIn', true);
+      return state.set('isUserLoggedIn', true);
 
     case LOGIN_FAILURE:
       // we then return a new state object
-      return set.state('isUserLoggedIn', false);
+      return state.set('isUserLoggedIn', false);
 
     case LOGOUT:
       // we then return a new state object
-      return set.state('isUserLoggedOut', false);
+      return state.set('isUserLoggedOut', false);
 
     default:
       // If this reducer doesn't recognize the action type, or doesn't
