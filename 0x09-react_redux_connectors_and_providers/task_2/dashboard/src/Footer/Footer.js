@@ -4,7 +4,6 @@ import { getFooterCopy, getFullYear } from "../utils/utils";
 import PropTypes from 'prop-types'
 
 function Footer({ user }) {
-  console.log(user);
   return (
     <div className="App-footer">
       {user && <a href="#">Contact us</a>}
