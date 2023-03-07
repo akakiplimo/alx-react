@@ -27,7 +27,6 @@ class App extends React.Component {
     ];
 
     this.state = {
-      displayDrawer: false,
       user: user,
       logOut: this.logOut,
       listNotifications: [
@@ -62,18 +61,6 @@ class App extends React.Component {
     // Reset the user in the local state
     this.setState({
       user: user,
-    });
-  };
-
-  handleDisplayDrawer = () => {
-    this.setState({
-      displayDrawer: true,
-    });
-  };
-
-  handleHideDrawer = () => {
-    this.setState({
-      displayDrawer: false,
     });
   };
 
