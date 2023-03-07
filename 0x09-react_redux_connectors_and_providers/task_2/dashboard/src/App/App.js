@@ -13,27 +13,31 @@ import { connect } from "react-redux";
 import {
   displayNotificationDrawer,
   hideNotificationDrawer,
+  loginRequest,
+  logout
 } from "../actions/uiActionCreators";
 import PropTypes from "prop-types";
+
+const listCourses = [
+  { id: 1, name: "ES6", credit: 60 },
+  { id: 2, name: "Webpack", credit: 20 },
+  { id: 3, name: "React", credit: 40 },
+];
+
+const listNotificationsInitial = [
+  { id: 1, value: "New course available", type: "default" },
+  { id: 2, value: "New resume available", type: "urgent" },
+  { id: 3, html: { __html: getLatestNotification() }, type: "urgent" },
+];
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.listCourses = [
-      { id: 1, name: "ES6", credit: 60 },
-      { id: 2, name: "Webpack", credit: 20 },
-      { id: 3, name: "React", credit: 40 },
-    ];
 
     this.state = {
-      user: user,
-      logOut: this.logOut,
-      listNotifications: [
-        { id: 1, value: "New course available", type: "default" },
-        { id: 2, value: "New resume available", type: "urgent" },
-        { id: 3, html: { __html: getLatestNotification() }, type: "urgent" },
-      ],
+      user,
+      listNotifications: listNotificationsInitial
     };
   }
 
@@ -46,29 +50,11 @@ class App extends React.Component {
     });
   };
 
-  logIn = (email, password) => {
-    // Update the user state
-    this.setState({
-      user: {
-        email,
-        password,
-        isLoggedIn: true,
-      },
-    });
-  };
-
-  logOut = () => {
-    // Reset the user in the local state
-    this.setState({
-      user: user,
-    });
-  };
-
   handleKeyDown(e) {
     if (e.ctrlKey && e.key === "h") {
       e.preventDefault();
       alert("Logging you out");
-      this.logOut();
+      this.props.logout();
     }
   }
 
@@ -81,16 +67,18 @@ class App extends React.Component {
   }
 
   render() {
-    const { user, logOut, listNotifications } = this.state;
+    const { user, listNotifications } = this.state;
 
     const {
       isLoggedIn,
       displayDrawer,
       displayNotificationDrawer,
       hideNotificationDrawer,
+      login,
+      logout,
     } = this.props;
 
-    const value = { user, logOut };
+    const value = { user, logout };
 
     return (
       <AppProvider value={value}>
@@ -104,13 +92,13 @@ class App extends React.Component {
           />
           <div className={css(bodyStyles.App)}>
             <Header />
-            {this.state.user.isLoggedIn ? (
+            {isLoggedIn ? (
               <BodySectionWithMarginBottom title="Course list">
-                <CourseList listCourses={this.listCourses} />
+                <CourseList listCourses={listCourses} />
               </BodySectionWithMarginBottom>
             ) : (
               <BodySectionWithMarginBottom title="Log in to continue">
-                <Login logIn={this.logIn} />
+                <Login logIn={login} />
               </BodySectionWithMarginBottom>
             )}
             <BodySection title="News from the School">
@@ -131,6 +119,7 @@ App.defaultProps = {
   displayDrawer: false,
   displayNotificationDrawer: () => {},
   hideNotificationDrawer: () => {},
+  login: () => {},
 };
 
 App.propTypes = {
@@ -138,6 +127,7 @@ App.propTypes = {
   displayDrawer: PropTypes.bool,
   displayNotificationDrawer: PropTypes.func,
   hideNotificationDrawer: PropTypes.func,
+  login: PropTypes.func,
 };
 
 const bodyStyles = StyleSheet.create({
@@ -169,6 +159,8 @@ export const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   displayNotificationDrawer,
   hideNotificationDrawer,
+  login: loginRequest,
+  logout
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
