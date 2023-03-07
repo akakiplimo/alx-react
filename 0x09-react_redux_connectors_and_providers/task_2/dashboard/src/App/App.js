@@ -105,7 +105,7 @@ class App extends React.Component {
               <p>Random Text</p>
             </BodySection>
             <div className={css(footerStyles.footer)}>
-              <Footer />
+              <Footer user={ user } />
             </div>
           </div>
         </React.Fragment>
