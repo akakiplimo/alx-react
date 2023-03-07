@@ -81,6 +81,8 @@ class App extends React.Component {
   }
 
   render() {
+    const { user, logOut, listNotifications } = this.state;
+
     const {
       isLoggedIn,
       displayDrawer,
@@ -131,7 +133,7 @@ App.defaultProps = {
   hideNotificationDrawer: () => {},
 };
 
-App.PropTypes = {
+App.propTypes = {
   isLoggedIn: PropTypes.bool,
   displayDrawer: PropTypes.bool,
   displayNotificationDrawer: PropTypes.func,
