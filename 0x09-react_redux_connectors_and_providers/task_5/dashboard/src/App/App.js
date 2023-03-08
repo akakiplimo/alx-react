@@ -39,15 +39,6 @@ class App extends React.Component {
       user,
       listNotifications: listNotificationsInitial
     };
-  }
-
-  markNotificationAsRead = (id) => {
-    const newList = this.state.listNotifications.filter(
-      (keep) => keep.id !== id
-    );
-    this.setState({
-      listNotifications: newList,
-    });
   };
 
   handleKeyDown(e) {
