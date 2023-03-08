@@ -5,9 +5,11 @@ export const filterTypeSelected = (state) => {
 };
 
 export const getNotifications = (state) => {
-  return Map(state.get("notifications"));
+  return state.get("notifications");
 };
 
 export const getUnreadNotifications = (state) => {
-  return Map(state.get("notifications")).filter((item) => !item.isRead);
+  const notifications = state.get("notifications")
+  const filtered = notifications.filter((item) => !item.isRead);
+  return filtered
 };

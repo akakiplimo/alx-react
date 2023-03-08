@@ -27,7 +27,7 @@ describe("uiReducer", function () {
     const state = uiReducer(undefined, { type: LOGIN, user: USER });
 
     expect(state.toJS()).toEqual({
-      ...initialState,
+      ...INITIAL_STATE,
       user: USER,
     });
   });
