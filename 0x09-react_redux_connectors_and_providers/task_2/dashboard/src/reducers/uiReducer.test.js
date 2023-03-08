@@ -1,7 +1,8 @@
-import { toJS } from "immutable";
 import uiReducer, { INITIAL_STATE } from "./uiReducer";
 import { SELECT_COURSE } from "../actions/courseActionTypes";
-import { DISPLAY_NOTIFICATION_DRAWER } from "../actions/uiActionTypes";
+import { DISPLAY_NOTIFICATION_DRAWER, LOGIN } from "../actions/uiActionTypes";
+
+const USER = { email: "casemiro@goat.com", password: "case123" };
 
 describe("uiReducer", function () {
   it("state returned equals the initial state when no action is passed", () => {
@@ -19,6 +20,15 @@ describe("uiReducer", function () {
     expect(state.toJS()).toEqual({
       ...INITIAL_STATE,
       isNotificationDrawerVisible: true,
+    });
+  });
+
+  it("verifies the state returned by the uiReducer function, when the action LOGIN is passed, changes correctly the user property", function () {
+    const state = uiReducer(undefined, { type: LOGIN, user: USER });
+
+    expect(state.toJS()).toEqual({
+      ...initialState,
+      user: USER,
     });
   });
 });
